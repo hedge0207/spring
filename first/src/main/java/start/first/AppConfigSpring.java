@@ -1,5 +1,7 @@
 package start.first;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import start.first.discount.DiscountPolicy;
 import start.first.discount.FixDiscountPolicy;
 import start.first.discount.RateDiscountPolicy;
@@ -9,24 +11,28 @@ import start.first.member.MemoryMemberRepository;
 import start.first.order.OrderService;
 import start.first.order.OrderServiceImpl;
 
-public class AppConfig {
+//구성 정보, 설정 정보라는 것을 알리기 위해 @Configuration 어노테이션을 달아 준다.
+@Configuration
+public class AppConfigSpring {
 
+    //@Bean 어노테이션을 사용하면 스프링 컨테이너에 등록이 된다.
+    @Bean
     public MemberService memberService(){
-        //MemoryMemberRepository를 MemberServiceImpl이 넣어주는 것이 아니라 여기서 넣어준다.
-        //생성자 주입
         return new MemberServiceImpl(memberRepository());
     }
 
-    private MemoryMemberRepository memberRepository() {
+    @Bean
+    public MemoryMemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
+    @Bean
     public OrderService orderService(){
         return new OrderServiceImpl(memberRepository(),discountPolicy());
     }
 
+    @Bean
     public DiscountPolicy discountPolicy(){
-//        return new FixDiscountPolicy();
-        return new RateDiscountPolicy();
+        return new FixDiscountPolicy();
     }
 }
