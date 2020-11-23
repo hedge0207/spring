@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--아래 3줄이 AppConfigSpring에서 memberService를 등록하는 부분에 해당한다.-->
+    <bean id="memberService" class="start.first.member.MemberServiceImpl">
+        <!--의존성을 작성-->
+        <constructor-arg name="memberRepository" ref="memberRepository" />
+    </bean>
+
+    <!--아래 1줄이 AppConfigSpring에서 memberRepository를 등록하는 부분에 해당한다.-->
+    <bean id="memberRepository" class="start.first.member.MemoryMemberRepository" />
+
+    <!--아래 3줄이 AppConfigSpring에서 orderService를 등록하는 부분에 해당한다.-->
+    <bean id="orderService" class="start.first.order.OrderServiceImpl">
+        <!--의존성을 작성-->
+        <constructor-arg name="memberRepository" ref="memberRepository" />
+        <constructor-arg name="discountPolicy" ref="discountPolicy" />
+    </bean>
+
+    <bean id="discountPolicy" class="start.first.discount.RateDiscountPolicy" />
+</beans>
