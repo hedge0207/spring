@@ -18,16 +18,19 @@ public class AppConfigSpring {
     //@Bean 어노테이션을 사용하면 스프링 컨테이너에 등록이 된다.
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService"); //호출 여부 확인을 위한 sout
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemoryMemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository"); //호출 여부 확인을 위한 sout
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService"); //호출 여부 확인을 위한 sout
         return new OrderServiceImpl(memberRepository(),discountPolicy());
     }
 
