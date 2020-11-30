@@ -31,7 +31,8 @@ public class AppConfigSpring {
     @Bean
     public OrderService orderService(){
         System.out.println("call AppConfig.orderService"); //호출 여부 확인을 위한 sout
-        return new OrderServiceImpl(memberRepository(),discountPolicy());
+//        return new OrderServiceImpl(memberRepository(),discountPolicy());
+        return null;
     }
 
     @Bean

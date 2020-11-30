@@ -1,6 +1,7 @@
 package start.first.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import start.first.discount.DiscountPolicy;
 import start.first.discount.FixDiscountPolicy;
 import start.first.discount.RateDiscountPolicy;
@@ -8,15 +9,17 @@ import start.first.member.Member;
 import start.first.member.MemberRepository;
 import start.first.member.MemoryMemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService{
+    //-----------------------------------생성자를 통한 의존관계 주입------------------------------------
     //기존 코드
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
     //변경한 코드
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+//    private final MemberRepository memberRepository;
+//    private final DiscountPolicy discountPolicy;
 
     //생성자
     //@Autowired를 사용하기 전 코드
@@ -26,12 +29,45 @@ public class OrderServiceImpl implements OrderService{
     //}
 
     //생성자에 @Autowired를 붙인다.
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
+    //------------------------------------------------------------------------------------------------
+
+
+    //-----------------------------------setter를 통한 의존관계 주입--------------------------------------
+//    private MemberRepository memberRepository;
+//    private DiscountPolicy discountPolicy;
+//
+//    @Autowired
+//    public void setMemberRepository(MemberRepository memberRepository){
+//        this.memberRepository = memberRepository;
+//    }
+//
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy){
+//        this.discountPolicy = discountPolicy;
+//    }
+    //--------------------------------------------------------------------------------------------------
+
+
+    //---------------------------------필드주입을 통한 의존관계 주입-----------------------------------------
+//    @Autowired private MemberRepository memberRepository;
+//    @Autowired private DiscountPolicy discountPolicy;
+    //--------------------------------------------------------------------------------------------------
+
+
+    //--------------------------------일반 메서드 주입-----------------------------------------------------
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
-
 
 
     @Override
