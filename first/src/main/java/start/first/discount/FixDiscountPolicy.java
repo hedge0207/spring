@@ -1,8 +1,11 @@
 package start.first.discount;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import start.first.member.Grade;
 import start.first.member.Member;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy{
 
     private int discoutFixAmount = 1000;

@@ -23,9 +23,9 @@ import start.first.member.MemoryMemberRepository;
 public class AutoAppConfig {
 
     //자동 등록-수동 등록 충돌 테스트를 위한 임시 코드
-    @Bean(name="memoryMemberRepository")
-    MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name="memoryMemberRepository")
+//    MemberRepository memberRepository(){
+//        return new MemoryMemberRepository();
+//    }
     
 }

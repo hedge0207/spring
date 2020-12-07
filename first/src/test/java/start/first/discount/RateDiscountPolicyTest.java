@@ -26,18 +26,18 @@ class RateDiscountPolicyTest {
     }
 
     //실패 테스트
-    @Test
-    @DisplayName("VIP가 아니면 할인이 적용되지 않아야 한다.")
-    void dontDis(){
-        //given
-        //VIP가 아닌 BASIC으로 생성
-        Member member = new Member(2L,"memberBASIC", Grade.BASIC);
-
-        //when
-        int discount = discountPolicy.discount(member,10000);
-
-        //then
-        //VIP가 아니므로 1000원이 아닌 0원이 되어야 한다.
-        Assertions.assertThat(discount).isEqualTo(1000);
-    }
+//    @Test
+//    @DisplayName("VIP가 아니면 할인이 적용되지 않아야 한다.")
+//    void dontDis(){
+//        //given
+//        //VIP가 아닌 BASIC으로 생성
+//        Member member = new Member(2L,"memberBASIC", Grade.BASIC);
+//
+//        //when
+//        int discount = discountPolicy.discount(member,10000);
+//
+//        //then
+//        //VIP가 아니므로 1000원이 아닌 0원이 되어야 한다.
+//        Assertions.assertThat(discount).isEqualTo(1000);
+//    }
 }
