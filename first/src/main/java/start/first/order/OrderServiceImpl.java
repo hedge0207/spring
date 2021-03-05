@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy;
 
     //생성자
-    //@Autowired를 사용하기 전 코드
+    //@Autowired를 사용하기 전 코드(사실 이 코드에는 @Autowired가 생략되어 있던 것이다)
     //public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
     //    this.memberRepository = memberRepository;
     //    this.discountPolicy = discountPolicy;
